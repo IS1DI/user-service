@@ -1,0 +1,31 @@
+spring:
+    security:
+        cors:
+            allowed-origins:
+                - "https://sovcomstudents.ru"
+                - "http://sovcomstudents.ru"
+                - "http://*.sovcomstudents.ru"
+                - "https://*.sovcomstudents.ru"
+                - "http://localhost:3000"
+        oauth2:
+            resource-server:
+                jwt:
+                    issuer-uri: ${ISSUER:http://localhost:9000}
+    data:
+        mongodb:
+            database: usersDB
+            uri: ${MONGODB_URI:mongodb://localhost:27017}
+    messages:
+        basename: messages
+        use-code-as-default-message: true
+server:
+    port: ${APP_PORT:8082}
+grpc:
+    client:
+        course:
+            address: ${COURSE_ADDR:courseservice}
+        academic:
+            address: ${ACADEMIC_ADDR:academicservice}
+    port: ${GRPC_PORT:7082}
+picture:
+    default-url-path: ${DEFAULT_PICTURE:https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=}
